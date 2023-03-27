@@ -40,7 +40,10 @@ class FileInfoCard extends StatelessWidget {
                   color: info.color,
                 ),
               ),
-              Icon(Icons.more_vert, color: Colors.white54)
+              InkWell(
+                child: Icon(Icons.more_vert, color: Colors.white54),
+                onTap: (){print("clicou");},
+                )
             ],
           ),
           Text(
@@ -56,14 +59,14 @@ class FileInfoCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "${info.numOfFiles} Files",
+                "${info.numOfFiles} Arquivos",
                 style: Theme.of(context)
                     .textTheme
                     .caption!
                     .copyWith(color: Colors.white70),
               ),
               Text(
-                info.totalStorage!,
+                info.totalStorage ?? "0",
                 style: Theme.of(context)
                     .textTheme
                     .caption!
