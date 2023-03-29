@@ -42,7 +42,7 @@ class FileInfoCard extends StatelessWidget {
               ),
               InkWell(
                 child: Icon(Icons.more_vert, color: Colors.white54),
-                onTap: (){print("clicou");},
+                onTap: (){},
                 )
             ],
           ),
