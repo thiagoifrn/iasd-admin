@@ -17,12 +17,16 @@ class SideMenu extends StatelessWidget {
           DrawerListTile(
             title: "Painel Principal",
             svgSrc: "assets/icons/menu_dashbord.svg",
-            press: () {},
+            press: () {
+              Navigator.pushReplacementNamed(context, '/Painel');
+            },
           ),
           DrawerListTile(
             title: "Documentos",
             svgSrc: "assets/icons/menu_doc.svg",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, '/Documents');
+            },
           ),
           DrawerListTile(
             title: "Configurações",
