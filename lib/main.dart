@@ -1,12 +1,26 @@
 import 'package:admin/constants.dart';
 import 'package:admin/controllers/MenuAppController.dart';
+import 'package:admin/screens/Login/login_screen.dart';
+import 'package:admin/screens/Welcome/welcome_screen.dart';
+import 'package:admin/screens/dashboard/dashboard_screen.dart';
 import 'package:admin/screens/main/main_screen.dart';
+import 'package:admin/screens/secretary/documents.dart';
+import 'package:admin/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => MenuAppController(),
+          ),
+        ],
+        child: MyApp(),
+      ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,14 +36,16 @@ class MyApp extends StatelessWidget {
             .apply(bodyColor: Colors.white),
         canvasColor: secondaryColor,
       ),
-      home: MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (context) => MenuAppController(),
-          ),
-        ],
-        child: MainScreen(),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/':(context) => WelcomeScreen(),
+        '/Painel':(context) => MainScreen(),
+        '/Login':(context) => LoginScreen(),
+        '/SignUp':(context) => SignUpScreen(),
+        '/Dash':(context) => DashboardScreen(),
+        '/Documents':(context) => Documents(),
+
+      },
     );
   }
 }
