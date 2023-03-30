@@ -1,11 +1,35 @@
+import 'package:admin/screens/login/components/sign_up_top_image.dart';
+import 'package:admin/screens/util/app_routes.dart';
 import 'package:flutter/material.dart';
-import 'components/login_form.dart';
+import '../../constants.dart';
 import 'components/login_screen_top_image.dart';
 import '../../components/background.dart';
 import '../../responsive.dart';
 
-class LoginScreen extends StatelessWidget {
+enum AuthMode { signup, login }
+
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  AuthMode _authMode = AuthMode.login;
+
+  bool _isLogin() => _authMode == AuthMode.login;
+  bool _isSignup() => _authMode == AuthMode.signup;
+
+  _switchAuthMode() {
+    setState(() {
+      if (_isLogin()) {
+        _authMode = AuthMode.signup;
+      } else {
+        _authMode = AuthMode.login;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +39,88 @@ class LoginScreen extends StatelessWidget {
           mobile: const MobileLoginScreen(),
           desktop: Row(
             children: [
-              const Expanded(
-                child: LoginScreenTopImage(),
+              Expanded(
+                child:
+                    _isLogin() ? LoginScreenTopImage() : SignUpScreenTopImage(),
               ),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     SizedBox(
                       width: 450,
-                      child: LoginForm(),
+                      child: Form(
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              keyboardType: TextInputType.emailAddress,
+                              textInputAction: TextInputAction.next,
+                              cursorColor: kPrimaryColor,
+                              onSaved: (email) {},
+                              decoration: InputDecoration(
+                                hintText: "Seu e-mail",
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.all(defaultPadding),
+                                  child: Icon(Icons.person),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: defaultPadding),
+                              child: TextFormField(
+                                textInputAction: TextInputAction.done,
+                                obscureText: true,
+                                cursorColor: kPrimaryColor,
+                                decoration: InputDecoration(
+                                  hintText: "Sua senha",
+                                  prefixIcon: Padding(
+                                    padding:
+                                        const EdgeInsets.all(defaultPadding),
+                                    child: Icon(Icons.lock),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            _isSignup()
+                                ? Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: defaultPadding),
+                                    child: TextFormField(
+                                      textInputAction: TextInputAction.done,
+                                      obscureText: true,
+                                      cursorColor: kPrimaryColor,
+                                      decoration: InputDecoration(
+                                        hintText: "Confirmar senha",
+                                        prefixIcon: Padding(
+                                          padding: const EdgeInsets.all(
+                                              defaultPadding),
+                                          child: Icon(Icons.lock),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : const SizedBox(height: defaultPadding),
+                            Hero(
+                              tag: "login_btn",
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(context, AppRoutes.login);
+                                },
+                                child: Text(
+                                  _isLogin() ? 'ACESSAR' : 'REGISTRAR',
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: defaultPadding),
+                            TextButton(
+                                onPressed: _switchAuthMode,
+                                child: Text(_isLogin()
+                                    ? 'DESEJA REGISTRAR?'
+                                    : 'JÁ POSSUI CONTA?'))
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -53,7 +149,7 @@ class MobileLoginScreen extends StatelessWidget {
             Spacer(),
             Expanded(
               flex: 8,
-              child: LoginForm(),
+              child: Text('LUIZ cARLOS DA sILVA'),
             ),
             Spacer(),
           ],
