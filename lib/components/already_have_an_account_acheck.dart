@@ -1,5 +1,5 @@
+import 'package:admin/util/constants.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
 
 class AlreadyHaveAnAccountCheck extends StatelessWidget {
   final bool login;

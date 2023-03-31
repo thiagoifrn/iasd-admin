@@ -1,7 +1,7 @@
 import 'package:admin/screens/login/components/sign_up_top_image.dart';
-import 'package:admin/screens/util/app_routes.dart';
+import 'package:admin/util/app_routes.dart';
+import 'package:admin/util/constants.dart';
 import 'package:flutter/material.dart';
-import '../../constants.dart';
 import 'components/login_screen_top_image.dart';
 import '../../components/background.dart';
 import '../../responsive.dart';

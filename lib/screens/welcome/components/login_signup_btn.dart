@@ -1,7 +1,5 @@
-import 'package:admin/screens/util/app_routes.dart';
+import 'package:admin/util/app_routes.dart';
 import 'package:flutter/material.dart';
-
-import '../../../constants.dart';
 
 class LoginAndSignupBtn extends StatelessWidget {
   const LoginAndSignupBtn({
