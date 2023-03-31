@@ -13,7 +13,7 @@ class LoginScreenTopImage extends StatelessWidget {
     return Column(
       children: [
         Text(
-          "LOGIN",
+          "fazendo login".toUpperCase(),
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         SizedBox(height: defaultPadding * 2),
@@ -21,7 +21,7 @@ class LoginScreenTopImage extends StatelessWidget {
           children: [
             const Spacer(),
             Expanded(
-              flex: 8,
+              flex: 3,
               child: SvgPicture.asset("assets/icons/login.svg"),
             ),
             const Spacer(),
