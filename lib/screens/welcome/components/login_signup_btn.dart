@@ -1,8 +1,8 @@
+import 'package:admin/util/app_routes.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../login/login_screen.dart';
-import '../../signup/signup_screen.dart';
 
 class LoginAndSignupBtn extends StatelessWidget {
   const LoginAndSignupBtn({
@@ -16,28 +16,16 @@ class LoginAndSignupBtn extends StatelessWidget {
         Hero(
           tag: "login_btn",
           child: ElevatedButton(
+            style: ElevatedButton.styleFrom(fixedSize: Size(300, 40)),
             onPressed: () {
-               Navigator.pushNamed(
-                context, '/Login');
+              Navigator.pushNamed(context, AppRoutes.LOGIN);
             },
             child: Text(
-              "Login".toUpperCase(),
+              "acessar".toUpperCase(),
             ),
           ),
         ),
         const SizedBox(height: 16),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(
-                context, '/SignUp');
-          },
-          style: ElevatedButton.styleFrom(
-              primary: kPrimaryLightColor, elevation: 0),
-          child: Text(
-            "Sign Up".toUpperCase(),
-            style: TextStyle(color: Colors.black),
-          ),
-        ),
       ],
     );
   }

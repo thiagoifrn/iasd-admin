@@ -1,9 +1,10 @@
+import 'package:admin/screens/login/controller_alth_login.dart';
+import 'package:admin/util/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants.dart';
-import '../../main/main_screen.dart';
-import '../../signup/signup_screen.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -12,6 +13,7 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _isLogin = Provider.of<ControllerAlthLogin>(context).isLogin();
     return Form(
       child: Column(
         children: [
@@ -21,7 +23,7 @@ class LoginForm extends StatelessWidget {
             cursorColor: kPrimaryColor,
             onSaved: (email) {},
             decoration: InputDecoration(
-              hintText: "Your email",
+              hintText: "Seu e-mail",
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(defaultPadding),
                 child: Icon(Icons.person),
@@ -35,7 +37,7 @@ class LoginForm extends StatelessWidget {
               obscureText: true,
               cursorColor: kPrimaryColor,
               decoration: InputDecoration(
-                hintText: "Your password",
+                hintText: "Sua senha",
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(defaultPadding),
                   child: Icon(Icons.lock),
@@ -43,25 +45,38 @@ class LoginForm extends StatelessWidget {
               ),
             ),
           ),
+          if (Provider.of<ControllerAlthLogin>(context).isSignup())
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: defaultPadding),
+              child: TextFormField(
+                textInputAction: TextInputAction.done,
+                obscureText: true,
+                cursorColor: kPrimaryColor,
+                decoration: InputDecoration(
+                  hintText: "Confirme sua senha",
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(defaultPadding),
+                    child: Icon(Icons.lock),
+                  ),
+                ),
+              ),
+            ),
           const SizedBox(height: defaultPadding),
           Hero(
             tag: "login_btn",
             child: ElevatedButton(
+              style: ElevatedButton.styleFrom(fixedSize: Size(250, 40)),
               onPressed: () {
-                Navigator.pushNamed(
-                context, '/Painel');
+                Navigator.pushNamed(context, AppRoutes.PAINEL);
               },
               child: Text(
-                "Login".toUpperCase(),
+                _isLogin ? "Login".toUpperCase() : 'Criar conta'.toUpperCase(),
               ),
             ),
           ),
           const SizedBox(height: defaultPadding),
           AlreadyHaveAnAccountCheck(
-            press: () {
-              Navigator.pushNamed(
-                context, '/SignUp');
-            },
+            press: () {},
           ),
         ],
       ),

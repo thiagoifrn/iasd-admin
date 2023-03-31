@@ -1,4 +1,7 @@
+import 'package:admin/screens/login/controller_alth_login.dart';
+import 'package:admin/screens/login/components/sign_up_top_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'components/login_form.dart';
 import 'components/login_screen_top_image.dart';
 import '../../components/background.dart';
@@ -6,6 +9,8 @@ import '../../responsive.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  // AuthMode _authMode = AuthMode.login;
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +20,10 @@ class LoginScreen extends StatelessWidget {
           mobile: const MobileLoginScreen(),
           desktop: Row(
             children: [
-              const Expanded(
-                child: LoginScreenTopImage(),
+              Expanded(
+                child: Provider.of<ControllerAlthLogin>(context).isLogin()
+                    ? LoginScreenTopImage()
+                    : SignUpScreenTopImage(),
               ),
               Expanded(
                 child: Row(
@@ -47,7 +54,9 @@ class MobileLoginScreen extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        const LoginScreenTopImage(),
+        Provider.of<ControllerAlthLogin>(context).isLogin()
+            ? LoginScreenTopImage()
+            : SignUpScreenTopImage(),
         Row(
           children: const [
             Spacer(),

@@ -1,3 +1,4 @@
+import 'package:admin/util/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -18,7 +19,7 @@ class SideMenu extends StatelessWidget {
             title: "Painel Principal",
             svgSrc: "assets/icons/menu_dashbord.svg",
             press: () {
-              Navigator.pushReplacementNamed(context, '/Painel');
+              Navigator.pushReplacementNamed(context, AppRoutes.PAINEL);
             },
           ),
           DrawerListTile(
