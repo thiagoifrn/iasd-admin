@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants.dart';
 import '../../main/main_screen.dart';
-import '../../signup/signup_screen.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -58,10 +57,7 @@ class LoginForm extends StatelessWidget {
           ),
           const SizedBox(height: defaultPadding),
           AlreadyHaveAnAccountCheck(
-            press: () {
-              Navigator.pushNamed(
-                context, '/SignUp');
-            },
+            press: () {},
           ),
         ],
       ),

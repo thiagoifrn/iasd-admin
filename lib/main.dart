@@ -5,7 +5,6 @@ import 'package:admin/screens/Welcome/welcome_screen.dart';
 import 'package:admin/screens/dashboard/dashboard_screen.dart';
 import 'package:admin/screens/main/main_screen.dart';
 import 'package:admin/screens/secretary/documents.dart';
-import 'package:admin/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +40,6 @@ class MyApp extends StatelessWidget {
         '/':(context) => WelcomeScreen(),
         '/Painel':(context) => MainScreen(),
         '/Login':(context) => LoginScreen(),
-        '/SignUp':(context) => SignUpScreen(),
         '/Dash':(context) => DashboardScreen(),
         '/Documents':(context) => Documents(),
 

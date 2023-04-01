@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../login/login_screen.dart';
-import '../../signup/signup_screen.dart';
 
 class LoginAndSignupBtn extends StatelessWidget {
   const LoginAndSignupBtn({
@@ -28,8 +27,6 @@ class LoginAndSignupBtn extends StatelessWidget {
         const SizedBox(height: 16),
         ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(
-                context, '/SignUp');
           },
           style: ElevatedButton.styleFrom(
               primary: kPrimaryLightColor, elevation: 0),
