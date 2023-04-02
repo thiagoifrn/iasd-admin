@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../util/app_routes.dart';
+
 class SideMenu extends StatelessWidget {
   const SideMenu({
     Key? key,
@@ -18,15 +20,14 @@ class SideMenu extends StatelessWidget {
             title: "Painel Principal",
             svgSrc: "assets/icons/menu_dashbord.svg",
             press: () {
-              Navigator.pushReplacementNamed(context, '/Painel');
+              Navigator.pushReplacementNamed(context, AppRoutes.PAINEL);
             },
           ),
           DrawerListTile(
             title: "Documentos",
             svgSrc: "assets/icons/menu_doc.svg",
             press: () {
-              Navigator.pushNamed(context, '/Documents');
-            },
+Navigator.pushReplacementNamed(context, AppRoutes.DOCUMENTS);            },
           ),
           DrawerListTile(
             title: "Configurações",

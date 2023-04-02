@@ -12,9 +12,12 @@ class WelcomeImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          "Bem vindo ao sistema de gerenciamento local da igreja.",
-          style: TextStyle(fontWeight: FontWeight.bold),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Text(
+            "Bem vindo ao sistema de gerenciamento local da igreja.",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
         SizedBox(height: defaultPadding * 3),
         Row(
