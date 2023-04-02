@@ -9,8 +9,6 @@ import '../../responsive.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
-  // AuthMode _authMode = AuthMode.login;
-
   @override
   Widget build(BuildContext context) {
     return Background(
