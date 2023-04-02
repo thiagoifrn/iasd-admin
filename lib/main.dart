@@ -5,20 +5,26 @@ import 'package:admin/screens/Welcome/welcome_screen.dart';
 import 'package:admin/screens/dashboard/dashboard_screen.dart';
 import 'package:admin/screens/main/main_screen.dart';
 import 'package:admin/screens/secretary/documents.dart';
+import 'package:admin/util/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
+import 'controllers/controller_alth_login.dart';
 
 void main() {
   runApp(
     MultiProvider(
         providers: [
-          ChangeNotifierProvider(
-            create: (context) => MenuAppController(),
-          ),
-        ],
-        child: MyApp(),
-      ),
+        ChangeNotifierProvider(
+          create: (context) => MenuAppController(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ControllerAlthLogin(),
+        )
+      ],
+      child: MyApp(),
+    ),
   );
 }
 
@@ -35,14 +41,12 @@ class MyApp extends StatelessWidget {
             .apply(bodyColor: Colors.white),
         canvasColor: secondaryColor,
       ),
-      initialRoute: '/',
       routes: {
-        '/':(context) => WelcomeScreen(),
-        '/Painel':(context) => MainScreen(),
-        '/Login':(context) => LoginScreen(),
-        '/Dash':(context) => DashboardScreen(),
-        '/Documents':(context) => Documents(),
-
+        AppRoutes.HOME: (context) => WelcomeScreen(),
+        AppRoutes.PAINEL: (_) => MainScreen(),
+        AppRoutes.LOGIN: (_) => const LoginScreen(),
+        AppRoutes.DASH: (_) => DashboardScreen(),
+        AppRoutes.DOCUMENTS: (_) => Documents(),
       },
     );
   }
