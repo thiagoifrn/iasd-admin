@@ -27,8 +27,7 @@ class SideMenu extends StatelessWidget {
             title: "Documentos",
             svgSrc: "assets/icons/menu_doc.svg",
             press: () {
-              Navigator.pushNamed(context, '/Documents');
-            },
+Navigator.pushReplacementNamed(context, AppRoutes.DOCUMENTS);            },
           ),
           DrawerListTile(
             title: "Configurações",
